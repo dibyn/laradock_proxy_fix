@@ -1074,7 +1074,7 @@ RUN if [ ${INSTALL_SYMFONY} = true ]; then \
 # PYTHON2:
 ###########################################################################
 
-ARG INSTALL_PYTHON=false
+ARG INSTALL_PYTHON=true
 
 RUN if [ ${INSTALL_PYTHON} = true ]; then \
   apt-get -y install python python-pip python-dev build-essential  \
@@ -1086,13 +1086,13 @@ RUN if [ ${INSTALL_PYTHON} = true ]; then \
 # PYTHON3:
 ###########################################################################
 
-# ARG INSTALL_PYTHON3=false
+ARG INSTALL_PYTHON3=true
 
-# RUN if [ ${INSTALL_PYTHON3} = true ]; then \
-#   apt-get -y install python3 python3-pip python3-dev build-essential  \
-#   && python3 -m pip install --upgrade --force-reinstall pip  \
-#   && python3 -m pip install --upgrade virtualenv \
-# ;fi
+RUN if [ ${INSTALL_PYTHON3} = true ]; then \
+  apt-get -y install python3 python3-pip python3-dev build-essential  \
+  && python3 -m pip install --upgrade --force-reinstall pip  \
+  && python3 -m pip install --upgrade virtualenv \
+;fi
 
 ###########################################################################
 # POWERLINE:
